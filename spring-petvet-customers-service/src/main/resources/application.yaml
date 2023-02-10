@@ -1,0 +1,14 @@
+
+server:
+  port: 8000
+
+spring:
+  application:
+    name: spring-petvet-customers-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/petvet
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+
+

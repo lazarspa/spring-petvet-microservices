@@ -1,0 +1,23 @@
+server:
+  port: 7000
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
+  datasource:
+    show-sql: true
+    url: jdbc:h2:mem:test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hibernate:
+      ddl-auto: 'create-drop'
+
+
+#datasource:
+#  driverClassName: org.h2.Driver
+#  url: jdbc:h2:mem:test
+#  username: sa
+#  password:
+
+
