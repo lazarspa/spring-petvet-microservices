@@ -24,18 +24,24 @@ public class OwnerDO {
     private Long id;
 
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
     @NotBlank
+    @Column(nullable = false)
     private String surname;
 
     @NotBlank
+    @Column(nullable = false)
     private String address;
 
     @NotBlank
+    @Column(nullable = false)
+
     private String city;
 
     @NotBlank
+    @Column(nullable = false)
     @Digits(fraction = 0,integer = 12)
     private String telephone;
 

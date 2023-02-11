@@ -23,18 +23,19 @@ public class PetDO {
     private Long id;
 
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
-    @Column(name ="birth_date")
+    @Column(name ="birth_date",nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @ManyToOne
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "type_id",nullable = false)
     private PetTypeDO type;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id",nullable = false)
     @JsonIgnore
     private OwnerDO owner;
 
