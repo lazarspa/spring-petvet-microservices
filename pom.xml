@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>spring-petvet-customers-service</module>
+      <module>spring-petvet-vets-service</module>
   </modules>
 
   <name>spring-petvet-microservices</name>
