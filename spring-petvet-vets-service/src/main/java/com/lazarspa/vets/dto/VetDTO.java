@@ -13,14 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class VetDTO implements Serializable {
-    private static final long serialVersionUID = 1905204142116905046L;
-
+public class VetDTO {
+//implements Serializable {
+//        private static final long serialVersionUID = 1905204142116905046L;
     private Long id;
 
     private String firstName;
 
     private String lastName;
 
-    private List<SpecialtyDTO> specialities;
+    private List<SpecialtyDTO> specialties;
 }
