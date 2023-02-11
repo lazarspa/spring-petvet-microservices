@@ -29,7 +29,7 @@ public class VetDO {
     private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name="vet_id"),
+    @JoinTable(name = "VET_SPECIALTIES", joinColumns = @JoinColumn(name="vet_id"),
     inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<SpecialtyDO> specialties;
 
