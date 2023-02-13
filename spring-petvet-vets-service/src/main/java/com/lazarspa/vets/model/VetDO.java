@@ -1,18 +1,14 @@
 package com.lazarspa.vets.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
-import org.springframework.beans.support.SortDefinition;
 
 import java.util.*;
 
-@Data
 @NoArgsConstructor
+@Data
 @AllArgsConstructor
 @Entity
 @Table(name = "VET")
@@ -39,11 +35,14 @@ public class VetDO {
 
         return this.specialties;
     }
-
     public List<SpecialtyDO> getSpecialties (){
         List<SpecialtyDO> sortedSpec = new ArrayList<>(getSpecialtiesInternal());
         PropertyComparator.sort(sortedSpec, new MutableSortDefinition("name",true,true));
         return Collections.unmodifiableList(sortedSpec);
+    }
+
+    public void setSpecialties(Set<SpecialtyDO> specialties) {
+        this.specialties = specialties;
     }
 
     public int getNrOfSpecialties() {

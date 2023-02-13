@@ -6,16 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @ToString
 public class VetDTO {
-//implements Serializable {
-//        private static final long serialVersionUID = 1905204142116905046L;
+
     private Long id;
 
     private String firstName;
@@ -23,4 +21,5 @@ public class VetDTO {
     private String lastName;
 
     private List<SpecialtyDTO> specialties;
+
 }
