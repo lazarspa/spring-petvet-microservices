@@ -21,33 +21,26 @@ public class OwnerDO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String surname;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @NotBlank
-    @Column(nullable = false)
+    @Column(name = "address")
     private String address;
 
-    @NotBlank
-    @Column(nullable = false)
-
+    @Column(name = "city")
     private String city;
 
-    @NotBlank
-    @Column(nullable = false)
-    @Digits(fraction = 0,integer = 12)
+    @Column(name = "telephone")
+    @Digits(fraction = 0, integer = 12)
     private String telephone;
 
-    @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "owner")
     private Set<PetDO> pets;
-
 
     protected Set<PetDO> getPetsInternal() {
         if (this.pets == null) {
@@ -72,11 +65,12 @@ public class OwnerDO {
         return new ToStringCreator(this)
 
                 .append("id", this.getId())
-                .append("lastName", this.getSurname())
-                .append("firstName", this.getName())
+                .append("lastName", this.getLastName())
+                .append("firstName", this.getFirstName())
                 .append("address", this.address)
                 .append("city", this.city)
                 .append("telephone", this.telephone)
+                .append("pets",this.pets)
                 .toString();
     }
 }

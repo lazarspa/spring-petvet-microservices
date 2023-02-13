@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -15,11 +16,11 @@ import java.util.Set;
 public class OwnerDTO implements Serializable {
    private static final long serialVersionUID = 1905204142116905046L;
 
-   private Long id;
+   private Integer id;
 
-   private String name;
+   private String firstName;
 
-   private String surname;
+   private String lastName;
 
    private String address;
 
@@ -27,6 +28,6 @@ public class OwnerDTO implements Serializable {
 
    private String telephone;
 
-   private Set<PetDTO> pets;
+   private List<PetDTO> pets;
 
 }

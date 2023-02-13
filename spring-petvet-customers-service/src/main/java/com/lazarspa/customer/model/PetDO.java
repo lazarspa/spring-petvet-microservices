@@ -1,5 +1,6 @@
 package com.lazarspa.customer.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -17,25 +18,23 @@ import java.util.Date;
 @Table(name = "PET")
 public class PetDO {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @NotBlank
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name ="birth_date",nullable = false)
+    @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @ManyToOne
-    @JoinColumn(name = "type_id",nullable = false)
+    @JoinColumn(name = "type_id")
     private PetTypeDO type;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id",nullable = false)
+    @JoinColumn(name = "owner_id")
     @JsonIgnore
     private OwnerDO owner;
 
@@ -46,8 +45,8 @@ public class PetDO {
                 .append("name", this.getName())
                 .append("birthDate", this.getBirthDate())
                 .append("type", this.getType().getName())
-                .append("ownerFirstname", this.getOwner().getName())
-                .append("ownerLastname", this.getOwner().getSurname())
+                .append("ownerFirstname", this.getOwner().getFirstName())
+                .append("ownerLastname", this.getOwner().getLastName())
                 .toString();
     }
 }
