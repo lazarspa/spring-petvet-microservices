@@ -15,15 +15,12 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Autowired
     private OwnerRepository ownerRepository;
-
     @Autowired
     private OwnerMapper ownerMapper;
 
     @Override
     public List<OwnerDTO> findAll() {
         List<OwnerDO> all = ownerRepository.findAll();
-        System.out.println(all
-        );
         return ownerMapper.toDtoList(all);
     }
 }

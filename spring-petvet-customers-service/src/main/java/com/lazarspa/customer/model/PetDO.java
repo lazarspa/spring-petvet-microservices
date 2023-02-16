@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.core.style.ToStringCreator;
@@ -13,7 +14,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "PET")
 public class PetDO {
@@ -33,9 +34,8 @@ public class PetDO {
     @JoinColumn(name = "type_id")
     private PetTypeDO type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
-    @JsonIgnore
     private OwnerDO owner;
 
     @Override
@@ -48,5 +48,13 @@ public class PetDO {
                 .append("ownerFirstname", this.getOwner().getFirstName())
                 .append("ownerLastname", this.getOwner().getLastName())
                 .toString();
+    }
+
+    public PetDO(Integer id, String name, Date birthDate, PetTypeDO type, OwnerDO owner) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.type = type;
+        this.owner = owner;
     }
 }

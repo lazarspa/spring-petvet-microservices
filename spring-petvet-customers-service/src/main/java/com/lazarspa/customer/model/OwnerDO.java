@@ -2,18 +2,21 @@ package com.lazarspa.customer.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @Entity
 @Table(name = "OWNER")
@@ -39,24 +42,19 @@ public class OwnerDO {
     @Digits(fraction = 0, integer = 12)
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "owner")
-    private Set<PetDO> pets;
-
-    protected Set<PetDO> getPetsInternal() {
-        if (this.pets == null) {
-            this.pets = new HashSet<>();
-        }
-        return this.pets;
-    }
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<PetDO> pets;
 
     public List<PetDO> getPets() {
-        final List<PetDO> sortedPets = new ArrayList<>(getPetsInternal());
-        PropertyComparator.sort(sortedPets, new MutableSortDefinition("name", true, true));
-        return Collections.unmodifiableList(sortedPets);
+        if (this.pets == null) {
+            this.pets = new ArrayList<>();
+        }
+        PropertyComparator.sort(this.pets, new MutableSortDefinition("name", true, true));
+        return Collections.unmodifiableList(this.pets);
     }
 
     public void addPet(PetDO pet) {
-        getPetsInternal().add(pet);
+        getPets().add(pet);
         pet.setOwner(this);
     }
 
