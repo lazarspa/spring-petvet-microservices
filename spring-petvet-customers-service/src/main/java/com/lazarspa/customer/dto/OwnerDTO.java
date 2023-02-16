@@ -1,5 +1,6 @@
 package com.lazarspa.customer.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class OwnerDTO implements Serializable {
 
    private String telephone;
 
+   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
    private List<PetDTO> pets;
 
 }

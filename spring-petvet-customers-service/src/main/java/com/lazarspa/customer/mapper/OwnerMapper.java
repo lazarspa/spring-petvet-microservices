@@ -5,6 +5,7 @@ import com.lazarspa.customer.dto.PetDTO;
 import com.lazarspa.customer.dto.PetTypeDTO;
 import com.lazarspa.customer.model.OwnerDO;
 import com.lazarspa.customer.model.PetDO;
+import com.lazarspa.customer.model.PetTypeDO;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

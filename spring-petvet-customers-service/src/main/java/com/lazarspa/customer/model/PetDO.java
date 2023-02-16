@@ -14,6 +14,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 @Table(name = "PET")
@@ -50,11 +51,4 @@ public class PetDO {
                 .toString();
     }
 
-    public PetDO(Integer id, String name, Date birthDate, PetTypeDO type, OwnerDO owner) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.type = type;
-        this.owner = owner;
-    }
 }

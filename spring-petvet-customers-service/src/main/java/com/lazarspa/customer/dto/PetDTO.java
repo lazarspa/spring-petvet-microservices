@@ -1,6 +1,10 @@
 package com.lazarspa.customer.dto;
 
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.*;
 
 import java.io.Serializable;
@@ -16,9 +20,12 @@ public class PetDTO implements Serializable {
 
     private Integer id;
 
+    @NotBlank
     private String name;
 
+    @Past
     private Date birthDate;
 
+    @Valid
     private PetTypeDTO type;
 }
